@@ -1,4 +1,6 @@
 const webpack =           require('webpack');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const historyApiFallback = require('connect-history-api-fallback');
 
 let commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
     name: "vendor"
@@ -41,7 +43,17 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    commonsPlugin
+    commonsPlugin,
+    new BrowserSyncPlugin({
+      // browse to http://localhost:3100/ during development,
+      // ./public directory is being served
+      host: 'localhost',
+      port: 3100,
+      files: ['./public/market/*.js'],
+      proxy: 'http://localhost:3000/'
+    }, {
+      reload: true
+    })
   ],
   devServer: {
     contentBase: './public/dist',
