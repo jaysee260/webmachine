@@ -20,7 +20,7 @@ const workitemObject = {
   },
   title: {
     type: String,
-    required: true
+    // required: true
   },
   repo: {
     type: String,

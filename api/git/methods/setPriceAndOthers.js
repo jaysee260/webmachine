@@ -20,8 +20,10 @@ module.exports = async function(issues, repo) {
   */
   issues = issues.map(issue => {
     let issue_number = issue.number.toString();
-    let workitem = data.find(wi => wi.itemId === issue_number);
-    issue.price = workitem.price;
+    let workitem = data.filter(wi => wi.itemId === issue_number)[0];
+    let price = workitem.price;
+    console.log(price);
+    issue.price = price;
     issue.stage = workitem.stage;
     issue.assignee = workitem.assignee;
     issue.due_date = moment(workitem.dueDate).format("MMMM Do, YYYY");
