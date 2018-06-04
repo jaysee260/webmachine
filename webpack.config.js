@@ -1,8 +1,9 @@
 const webpack =           require('webpack');
 const path =              require('path');
-let commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
-    name: "vendor"
-  });
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// let commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
+//     name: "vendor"
+//   });
 
 module.exports = {
   entry: {  
@@ -53,10 +54,16 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    commonsPlugin
+    // commonsPlugin,
+    new HtmlWebpackPlugin(
+      {
+        inject: true,
+        template: './client/public/index.html'
+      }
+    )
   ],
   devServer: {
-    contentBase: './public/dist',
+    contentBase: __dirname + '/public/dist',
     hot: true
   }
 };
