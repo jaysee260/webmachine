@@ -7,18 +7,19 @@
 "use strict";
 
 import React, { Component } from "react";
-import API from "../../common/utils/API";
-import URI from "../../common/utils/URI";
+import API from "Common/utils/API";
+import URI from "Common/utils/URI";
 import Auth from "../../home/src/Pages/Auth/Auth";
-import LoadingPage from "../../common/LoadingPage";
-import { Col, Row, Container, FlexWrapper, FlexItem } from "../../common/grid";
-import { Button } from "../../common/form";
+import LoadingPage from "Common/LoadingPage";
+import { BackHome } from 'Common/navigation';
+import { Col, Row, Container, FlexWrapper, FlexItem } from "Common/grid";
+import { Button } from "Common/form";
 import { DashNetworks, DashMembers } from "./components";
 import UpdateMemberProfile from './components/UpdateMemberProfile';
 import { DashHeader, LaunchClientForm } from "./partials";
-import { ErrorBoundary } from "../../common/error";
+import { ErrorBoundary } from "Common/error";
 import "./App.css";
-import "../../common/styles/animate.css";
+import "Common/styles/animate.css";
 
 const config = require("../../../config").init();
 const auth = new Auth("/dashboard");
@@ -180,6 +181,9 @@ export default class DashboardComponent extends Component {
         ) : (
           <div>
             <DashHeader text={this.state.pageData.main} />
+
+            <BackHome />
+
             <FlexWrapper>
               {this.renderLeftColumn()}
               {this.renderRightColumn()}
