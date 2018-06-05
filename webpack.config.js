@@ -5,6 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //     name: "vendor"
 //   });
 
+// Source Directory
+const SRC_DIR = path.resolve(__dirname, './client/src');
+const BUILD_DIR = path.resolve(__dirname, 'build');
+
 module.exports = {
   entry: {  
     // web: './public/web/src/index.js',
@@ -15,9 +19,21 @@ module.exports = {
     // agents: './public/agents/src/index.js',
     // dashboard: './public/dashboard/src/index.js',
     // member_registration: './public/member/src/index.js'
-    webmachine: './client/src/index.js'
+    webmachine: [SRC_DIR + '/index.js']
+    },
+    output: {
+      path: BUILD_DIR,
+      publicPath: '/',
+      filename: '[name]-bundle.js'
     },
     devtool: 'source-map',
+    devServer: {
+      contentBase: BUILD_DIR,
+      port: 3000,
+      compress: true,
+      hot: true,
+      open: true
+    },
   module: {
     rules: [
       {
@@ -47,11 +63,6 @@ module.exports = {
     },
   
   },
-  output: {
-    path: __dirname + '/public/dist',
-    publicPath: '/',
-    filename: '[name]-bundle.js'
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     // commonsPlugin,
@@ -61,9 +72,6 @@ module.exports = {
         template: './client/public/index.html'
       }
     )
-  ],
-  devServer: {
-    contentBase: __dirname + '/public/dist',
-    hot: true
-  }
+  ]
+ 
 };
