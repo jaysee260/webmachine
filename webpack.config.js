@@ -19,17 +19,17 @@ module.exports = {
     // agents: './public/agents/src/index.js',
     // dashboard: './public/dashboard/src/index.js',
     // member_registration: './public/member/src/index.js'
-    webmachine: [SRC_DIR + '/index.js']
+      webmachine: [SRC_DIR + '/index.js']
     },
     output: {
       path: BUILD_DIR,
-      publicPath: '/',
-      filename: '[name]-bundle.js'
+      filename: '[name].bundle.js',
+      publicPath: '/'
     },
     devtool: 'source-map',
     devServer: {
       contentBase: BUILD_DIR,
-      port: 3000,
+      port: 3001,
       compress: true,
       hot: true,
       open: true

@@ -6,7 +6,7 @@ const routes = [
     name: 'Home',
     exact: true,
     isProtected: false,
-    component: () => <Home />
+    component: () => <p>This is the Home Component</p>
   },
   {
     path: '/landing',
