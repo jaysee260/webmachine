@@ -30,7 +30,7 @@ const memberObject = {
   // isActive: { type: Boolean, default: true },
   joinDate: { type: Date, default: Date.now() },
   // postdate: { type: Date, default: Date.now() },
-  id: { type: String, default: uuidv1() }
+  // id: { type: String, default: uuidv1() }
 }
 
 const memberSchema = new Schema(memberObject, { collection: 'Member' });
