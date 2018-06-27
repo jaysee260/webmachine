@@ -31,8 +31,10 @@ const memberObject = {
     default: false
   },
   dev_profile: {
+    // --- Group 1 ---
     github_username: String,
     competencies: Array,
+    // --- Group 2 ---
     ssn: String,
     payment_info: {
       bank_name: String,
@@ -43,6 +45,7 @@ const memberObject = {
         default: 0
       }
     },
+    // --- Group 3 ---
     workitems: {
       active: Array,
       pending: Array,
