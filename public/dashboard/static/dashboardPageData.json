@@ -23,8 +23,14 @@
       "which will have intelligent text interactions with your customers and/or clients."
     ],
     "developerSectionContent": {
-      "title": "Become a Developer",
-      "noSubscriptions": "Some networks support marketplaces where you can complete workitems for pay.",
+      "isNotDeveloper" : {
+        "title": "Become a Developer",
+        "subtitle": "Some networks support marketplaces where you can complete workitems for pay.",
+        "description": "Developers are also members of the networks they develop for, but regular members are not necessarily developers. Read more about it here."
+      },
+      "isDeveloper": {
+        "title": "You're a developer for:"
+      },
       "buttonText": "Explore Networks with Marketplaces"
     }
   }
