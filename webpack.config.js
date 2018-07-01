@@ -13,7 +13,8 @@ module.exports = {
     client: './public/client/src/index.js',
     agents: './public/agents/src/index.js',
     dashboard: './public/dashboard/src/index.js',
-    member_registration: './public/member/src/index.js'
+    member_registration: './public/member/src/index.js',
+    developer_registration: './public/developer/src/index.js'
     },
     devtool: 'source-map',
   module: {
