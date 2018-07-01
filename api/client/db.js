@@ -76,7 +76,7 @@ exports.getClients = (accessId) => {
 // Gets all public clients
 exports.getPublicClients = () => {
     return new Promise((resolve, reject) => {
-        Client.find({ isPrivate: false, isActivated: true }, "name image description addr1 addr2 city state zip sms").then(response => {
+        Client.find({ isPrivate: false, isActivated: true }, "name image description addr1 addr2 city state zip sms runsMarket").then(response => {
             resolve(response);
         }).catch(err => {
             if(err) {

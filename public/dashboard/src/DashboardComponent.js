@@ -14,7 +14,7 @@ import LoadingPage from "Common/LoadingPage";
 import { BackHome } from 'Common/navigation';
 import { Col, Row, Container, FlexWrapper, FlexItem } from "Common/grid";
 import { Button } from "Common/form";
-import { DashNetworks, DashMembers } from "./components";
+import { DashNetworks, DashMembers, DeveloperSection } from "./components";
 import UpdateMemberProfile from './components/UpdateMemberProfile';
 import { DashHeader, LaunchClientForm } from "./partials";
 import { ErrorBoundary } from "Common/error";
@@ -157,6 +157,19 @@ export default class DashboardComponent extends Component {
     )
   }
 
+  renderMiddleColumn() {
+    let { developerSectionContent } = this.state.pageData.main;
+    return (
+      <FlexItem classes="animated fadeIn light-shadow text-center">
+
+        <DeveloperSection
+          content={developerSectionContent}
+        />
+
+      </FlexItem>
+    )
+  }
+
   /**
    * @method handleMemberProfileUpdate
    * @param {Boolean} shouldUpdate 
@@ -187,6 +200,10 @@ export default class DashboardComponent extends Component {
             <FlexWrapper>
               {this.renderLeftColumn()}
               {this.renderRightColumn()}
+            </FlexWrapper>
+
+            <FlexWrapper>
+              {this.renderMiddleColumn()}
             </FlexWrapper>
           </div>
         )}

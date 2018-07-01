@@ -57,6 +57,8 @@ const objStore = [
     username: "auto",
     password: "B0ston",
     isActivated: true,
+    isPrivate: false,
+    runsMarket: true,
     accessToken: "useless102",
   },
   {
