@@ -48,6 +48,7 @@ app.use('/dashboard', express.static('public'));
 app.use('/landing', express.static('public'));
 app.use('/client', express.static('public'));
 app.use('/member', express.static('public'));
+app.use('/developer', express.static('public'));
 app.use('/', express.static('public/home'));
 app.use(favicon(path.join(__dirname, '..', '/public/assets/favicon.ico')));
 app.use(cors())
