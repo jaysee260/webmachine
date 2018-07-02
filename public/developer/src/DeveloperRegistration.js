@@ -4,7 +4,11 @@ import Auth from '../../home/src/Pages/Auth/Auth'
 class DeveloperRegistration extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      location: 'networks-with-marketplace',
+      networks: [],
+      developer_form: {}
+    };
   }
 
   componentWillMount() {

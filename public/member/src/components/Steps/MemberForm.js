@@ -158,34 +158,3 @@ class MemberForm extends Component {
 }
 
 export default MemberForm;
-
-
-// If there's record of state in localStorage, retrieve it
-// and refill the form with it.
-// componentDidMount() {
-//   if ('memberForm' in ls) {
-//     let memberFormRemnants = JSON.parse(ls.getItem('memberForm'));
-//     let keys = Object.keys(memberFormRemnants);
-//     let values = Object.values(memberFormRemnants);
-//     let updatedState = {};
-//     // Safety net
-//     if (keys.length !== values.length) return;
-
-//     let form = Array.from(d.getElementById('member-form'));
-//     // Get rid of submit button - not needed for these purposes
-//     form.pop();
-
-//     // Iterate through every form field and create an object using
-//     // key/value pairs from localStorage
-//     for (let i = 0; i < form.length; i++) {
-//       updatedState[keys[i]] = values[i];
-//     }
-
-//     // this.props.handleChange(updatedState);
-
-//   } else {
-//     // First time component mounts and there's no data in localStorage
-//     // this.setState({ state: d.getElementById('state')[0].value });
-//   }
-
-// }
