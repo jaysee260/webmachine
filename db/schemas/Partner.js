@@ -12,27 +12,45 @@ const Schema = mongoose.Schema;
 // REFACTOR - EXPLORE MONGOOSE POPULATE TO SYNC WITH MEMBER COLLECTION
 
 const partnerObject = {
-  firstname: String,
-  lastname: String,
-  github: Object,
+  member_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Member',
+    unique: true
+  },
+  github: {
+    type: String,
+    unique: true
+  },
   competencies: Array,
-  payments: Object,
-  digitalRep: Object,
+  ssn: {
+    type: String,
+    unique: true
+  },
   workitems: {
-    pending: Array,
     active: Array,
+    pending: Array,
     completed: Array,
-    archived: Array,
-    abandoned: Array,
-    escalations: Array
-  },  
-  ssn: String,
-  joindate: { type: Date, default: Date.now },
-  inactivedate: Date,
-  postdate: { type: Date, default: Date.now },
-  id: { type: String,
-        default: uuidv1(),
-        required: true}
+    abandoned: Array
+  },
+  payment_info: {
+    bank_name: String,
+    bank_account: {
+      type: String,
+      unique: true
+    },
+    routing_number: {
+      type: String,
+      unique: true
+    },
+    payments_received: {
+      type: Number,
+      default: 0
+    }
+  },
+  joinDate: {
+    type: Date,
+    default: Date.now
+  }
 }
 
 const partnerSchema = new Schema(partnerObject, { collection: 'Partner' });
