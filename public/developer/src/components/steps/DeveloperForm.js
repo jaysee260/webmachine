@@ -3,6 +3,10 @@ import API from 'Common/utils/API';
 
 import { LoadingCog } from 'Common/loading'
 
+// Form components
+import Dev from './Form/Dev';
+import Complete from './Form/Complete'
+
 class DeveloperForm extends Component {
 
   constructor(props) {
@@ -55,11 +59,11 @@ class DeveloperForm extends Component {
 
     if (count > 0) {
       return (
-        <p>Fills out Member and Dev form</p>
+        <Complete />
       )
     } else {
       return (
-        <p>Fills out Dev form only</p>
+        <Dev />
       )
     }
 
@@ -67,10 +71,13 @@ class DeveloperForm extends Component {
 
   render() {
     return (
-      <div>
+      <form
+        id="developer-form"
+        style={{ width: '70%', margin: '0 auto' }}
+      >
         <h1>This is where you fill out a form!</h1>
         {!this.state.loading ? this.renderForm() : <LoadingCog />}
-      </div>
+      </form>
     );
   }
 
