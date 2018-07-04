@@ -57,7 +57,6 @@ class NetworkSelection extends Component {
    * @returns {NodeList}
   */
   renderNetworks() {
-    // Will eventually be array of networks pulled from DB
     let { discoverableNetworks } = this.state;
 
     // Return <ul> of discoverable networks.
