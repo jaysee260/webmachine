@@ -75,11 +75,22 @@ const dbclient = (router) => {
             });
         }
     })
+
     router.get('/public', (req, res, next) => {
         clientApi.getPublicClients(req.token, req.conn, (response) => {
             res.status(200).send(response);
         })
     })
+
+    // add async
+    router.get('/withMarket', (req, res, next) => {
+      res.status(200).json({
+        payload: null,
+        msg: "You've reached the route to retrieve clients with a market",
+        status: "Under construction"
+      });
+    });
+
     // Updates a client
     router.post('/', (req, res, next) => {
         console.log("-----------DB Clients POST ROUTE -----------");
