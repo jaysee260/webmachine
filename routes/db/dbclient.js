@@ -8,6 +8,7 @@
 
 const bodyParser =  			                require('body-parser')
 const clientApi =                               require('../../api/client');
+const { getPublicClientsWithMarket } =          require('../../api/client/db');
 const netlifyApi =                              require('../../api/client/netlify');
 const { r, g, b } =                             require('../../console');
 const request =                                 require('request');
@@ -19,7 +20,7 @@ const { verifyJWTToken, getIdFromToken } =      require('../../utils/auth/verify
 
 const dbclient = (router) => {
     router.use(bodyParser.json());
-    router.use(verifyJWTToken);
+    // router.use(verifyJWTToken);
     // DELETE ROUTE
     router.delete("/", (req, res, next) => {
         console.log("-----------DB Clients DELETE ROUTE -----------");
@@ -82,13 +83,18 @@ const dbclient = (router) => {
         })
     })
 
-    // add async
-    router.get('/withMarket', (req, res, next) => {
+    // Calls handler that returns all public clients with a marketplace
+    router.get('/withMarket', async (req, res, next) => {
+
+      // Refactor - access getPublicClientsWithMarket via clientApi
+      let clientsWithMarket = await getPublicClientsWithMarket();
+
       res.status(200).json({
-        payload: null,
+        payload: clientsWithMarket,
         msg: "You've reached the route to retrieve clients with a market",
         status: "Under construction"
       });
+
     });
 
     // Updates a client
