@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Auth from '../../home/src/Pages/Auth/Auth'
+import { BackToDashboard } from '../../common/navigation'
 
 class DeveloperRegistration extends Component {
   constructor(props) {
@@ -19,7 +20,10 @@ class DeveloperRegistration extends Component {
 
   render() {
     return (
-      <h1>Developer Registration Page</h1>
+      <div className="container">
+        <BackToDashboard />
+        <h1>Developer Registration Page</h1>
+      </div>
     )
   }
 }
