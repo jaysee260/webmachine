@@ -17,7 +17,7 @@ export const DeveloperSection = ({ content }) =>
     {/* <h4>{ content.isNotDeveloper.description }</h4> */}
 
     <div>
-      <a href="#" className="btn btn-default">
+      <a href="/developer" className="btn btn-default">
         { content.buttonText }
       </a>
     </div>
