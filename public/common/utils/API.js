@@ -56,6 +56,9 @@ export default {
       },
       removeFromNetwork: (clientId) => {
         return axios.delete('/api/db/member/profile/network/' + clientId);
+      },
+      checkMembership: () => {
+        return axios.get('/api/db/member/check-membership');
       }
     },
     stripe: {
