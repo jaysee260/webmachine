@@ -33,6 +33,34 @@ class NetworkSelection extends Component {
 
   }
 
+   /** 
+   * @method renderNetworks
+   * @description
+   * Renders networks with a marketplace as a list-group.
+   * @returns {NodeList}
+  */
+  renderNetworks() {
+    let { networks_with_market } = this.state;
+
+    return (
+      <ul
+        id="networks-with-market"
+        className="list-group list-group-flush"
+        style={{overflowY: 'scroll', maxHeight: '250px'}}
+      >
+        {networks_with_market.map((n, i) => (
+          <li
+            id={n._id} key={i+1}
+            className="list-group-item network"
+            // onClick={}
+          >
+            {n.name}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
       <div
@@ -47,9 +75,23 @@ class NetworkSelection extends Component {
           <h5 className='subtitle'>A marketplace is an environment where developers can browse through workitems matching their skillset.</h5> 
           <h5 className='subtitle'>As a developer of a network, you have the ability to "pick up" workitems and complete them by its respective deadline.</h5>
           <h5 className='subtitle'>Once a workitem has been completed, reviewed and approved by an admin, payment is released to the developer.</h5>
-          
+
         </header>
 
+
+        <main>
+
+          <section id="networks-with-market">
+          
+            <div className="row m-4">
+              <div className="col-md-8 offset-md-2 col-sm-12">
+                {this.renderNetworks()}
+              </div>
+            </div>
+
+          </section>
+
+        </main>
 
       </div>
     );
