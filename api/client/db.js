@@ -89,6 +89,22 @@ exports.getPublicClients = () => {
     })
 }
 
+// Gets all public clients that have an active marketplace
+exports.getPublicClientsWithMarket = () => {
+  return new Promise((resolve, reject) => {
+      Client.find({ isActivated: true, runsMarket: true }, "name image description sms runsMarket").then(response => {
+          resolve(response);
+      }).catch(err => {
+          if(err) {
+              if(err.error !== 'not_found') 
+                  resolve(err)
+              else
+                  reject(err);
+          }
+      })
+  })
+}
+
 // Gets Client by id
 exports.getClient = (id) => {
     return new Promise((resolve, reject) => {
