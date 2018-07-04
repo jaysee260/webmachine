@@ -59,7 +59,10 @@ class DeveloperForm extends Component {
 
     if (count > 0) {
       return (
-        <Complete />
+        <div>
+          <Complete />
+          <Dev />
+        </div>
       )
     } else {
       return (
