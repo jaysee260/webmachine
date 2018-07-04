@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Auth from '../../home/src/Pages/Auth/Auth'
-import { BackToDashboard } from '../../common/navigation'
+import React, { Component }     from 'react';
+import Auth                     from '../../home/src/Pages/Auth/Auth'
+import { BackToDashboard }      from '../../common/navigation'
 
 // Import stages of the process
 import NetworkSelection from './components/steps/NetworkSelection';
@@ -14,6 +14,10 @@ class DeveloperRegistration extends Component {
       networks: [],
       developer_form: {}
     };
+
+    // bindings
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleNetworkSelection = this.handleNetworkSelection.bind(this);
   }
 
   // If user isn't authenticated,
@@ -24,13 +28,38 @@ class DeveloperRegistration extends Component {
       auth.login()
   }
 
+
+  /**
+   * @param {String} location
+   * Passed to children to handle page changes
+   */
+  handlePageChange(location) {
+    this.setState({ location });
+  }
+
+
+  /**
+   * @param {Array} networks_to_join
+   * Passed to NetworkSelection stage to allow
+   * for the lifting up of networks_with_market
+   */
+  handleNetworkSelection(networks) {
+    this.setState({ networks });
+  }
+
+
+
   renderPage() {
 
    let { location } = this.state;
 
    if (location === 'network-selection') {
      return (
-       <NetworkSelection />
+        <NetworkSelection
+          networks={[]}
+          changePage={this.handlePageChange}
+          handleSelection={this.handleNetworkSelection}
+        />
      )
    } else if (location === 'developer-form') {
      return (
@@ -40,7 +69,11 @@ class DeveloperRegistration extends Component {
      // If, for whatever reason, the value of location is wiped out
       // from state, render the first step of the registration process.
      return (
-       <NetworkSelection />
+        <NetworkSelection
+          networks={[]}
+          changePage={this.handlePageChange}
+          handleSelection={this.handleNetworkSelection}
+        />
      )
    }
 
