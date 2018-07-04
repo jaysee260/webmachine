@@ -4,10 +4,14 @@
 //////// route for checking membership ///////
 //////////////////////////////////////////////
 
+const bodyParser = require('body-parser')
 const { getIdFromToken } = require('../../../utils/auth/verifyJwtToken');
 
 
 const checkMembership = router => {
+
+  // Route middleware
+  router.use(bodyParser.json());
 
   router.get('/', (req, res, next) => {
     let auth_header = req.headers.authorization;
