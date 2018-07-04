@@ -56,9 +56,9 @@ class DeveloperRegistration extends Component {
    if (location === 'network-selection') {
      return (
         <NetworkSelection
-          networks={[]}
+          networks={this.state.networks}
           changePage={this.handlePageChange}
-          handleSelection={this.handleNetworkSelection}
+          handleSelectionChange={this.handleNetworkSelection}
         />
      )
    } else if (location === 'developer-form') {
