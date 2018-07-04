@@ -4,6 +4,7 @@ import { BackToDashboard }      from '../../common/navigation'
 
 // Import stages of the process
 import NetworkSelection from './components/steps/NetworkSelection';
+import DeveloperForm from './components/steps/DeveloperForm';
 
 
 class DeveloperRegistration extends Component {
@@ -63,7 +64,9 @@ class DeveloperRegistration extends Component {
      )
    } else if (location === 'developer-form') {
      return (
-       <h1>This is where you fill out a form</h1>
+       <DeveloperForm
+          networksToCheck={this.state.networks}
+       />
      )
    } else {
      // If, for whatever reason, the value of location is wiped out
