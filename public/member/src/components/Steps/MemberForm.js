@@ -54,9 +54,9 @@ class MemberForm extends Component {
     } = this.props.formValues;
     return (
       <form id='member-form' style={{ width: '70%', margin: '0 auto' }}>
-        <h4 className="form-title">Last Step</h4>
+        {/* <h4 className="form-title">Last Step</h4> */}
         <a href='#' onClick={() => this.props.changePage('networks-to-join')}>
-          Go (back) to the Network Selection Stage
+          Back to Network Selection
         </a>
         <div className="form-row">
 

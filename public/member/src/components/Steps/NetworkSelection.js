@@ -136,7 +136,7 @@ class NetworkSelection extends Component {
         
         <header>
 
-          <h4 className="form-title">Step 1</h4>
+          {/* <h4 className="form-title">Step 1</h4> */}
           <h3 className="title">Browse available public networks</h3>
           <h5 className='subtitle'>Select one or a few you might want to join</h5> 
 
