@@ -36,7 +36,13 @@ class DeveloperRegistration extends Component {
    * Passed to children to handle page changes
    */
   handlePageChange(location) {
-    this.setState({ location });
+    // Value of location inicates where we're navigating TO.
+    // This decision structure ensures that at least one network is
+    // selected before proceeding to fill out the form.
+    if (location === 'developer-form' && this.state.networks.length === 0)
+      alert('Please select at least one network before proceeding')
+    else
+      this.setState({ location });
   }
 
 
