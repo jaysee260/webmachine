@@ -5,7 +5,6 @@
 //////////////////////////////////////////////////////////////////////////
 
 const mongoose = require("mongoose");
-const uuidv1 =  require('uuid/v1')
 const Schema = mongoose.Schema;
 
 // notes:
@@ -26,11 +25,19 @@ const memberObject = {
   email: String,
   auth0Id: String,
   networks: [ String ],
-  // isAuthenticated: { type: Boolean, default: false },
-  // isActive: { type: Boolean, default: true },
-  joinDate: { type: Date, default: Date.now() },
-  // postdate: { type: Date, default: Date.now() },
-  id: { type: String, default: uuidv1() }
+  isDev: {
+    type: Boolean,
+    default: false
+  },
+  // dev_profile: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Partner',
+  //   default: null
+  // },
+  joinDate: {
+    type: Date,
+    default: Date.now()
+  }
 }
 
 const memberSchema = new Schema(memberObject, { collection: 'Member' });

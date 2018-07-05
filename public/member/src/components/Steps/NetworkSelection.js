@@ -57,7 +57,6 @@ class NetworkSelection extends Component {
    * @returns {NodeList}
   */
   renderNetworks() {
-    // Will eventually be array of networks pulled from DB
     let { discoverableNetworks } = this.state;
 
     // Return <ul> of discoverable networks.
@@ -137,7 +136,7 @@ class NetworkSelection extends Component {
         
         <header>
 
-          <h4 className="form-title">First Step</h4>
+          {/* <h4 className="form-title">Step 1</h4> */}
           <h3 className="title">Browse available public networks</h3>
           <h5 className='subtitle'>Select one or a few you might want to join</h5> 
 
@@ -173,7 +172,7 @@ class NetworkSelection extends Component {
 
           {/* Should only display after one or more networks selected */}
           <a href='#' onClick={() => this.props.changePage('member-form')}>
-            Go to the Member Registration Form (Next)
+            Next
           </a>
 
         </footer>

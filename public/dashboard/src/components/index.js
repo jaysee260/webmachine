@@ -7,3 +7,4 @@ export * from './OwnedClient';
 export * from './JoinedClient';
 export * from './ClientsSection';
 export * from './MembersSection';
+export * from './DeveloperSection';

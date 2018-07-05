@@ -33,7 +33,7 @@ const removeFromNetwork = (router) => {
     // Remove Member Document from Client's Member Collection
     const query3 = { "auth0Id": memberId }
     try {
-      await Members.findByIdAndRemove(query3)
+      await Members.findOneAndRemove(query3)
     } catch (error) {
       let message = 'ERROR - Trouble removing Member from Client\'s Database';
       res.status(500).json({ error, message })

@@ -30,6 +30,9 @@ export default {
         getPublicClients: () => {
             return axios.get('/api/db/client/public');
         },
+        getPublicClientsWithMarket: () => {
+          return axios.get('/api/db/client/withMarket');
+        },
         /// WE WILL NOT BE ADDING CLIENTS FROM THIS SECTION ANYMORE
         addClient: (client) => {
             return axios.put('/api/db/client', client);
@@ -53,6 +56,9 @@ export default {
       },
       removeFromNetwork: (clientId) => {
         return axios.delete('/api/db/member/profile/network/' + clientId);
+      },
+      checkMembership: (networksToCheck) => {
+        return axios.post('/api/db/member/check-membership', networksToCheck);
       }
     },
     stripe: {
