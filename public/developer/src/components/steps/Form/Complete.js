@@ -62,23 +62,32 @@ class Complete extends Component {
 
           </div>
 
-          <div className="form-group">
-            <Label forHtml='address1' innerText='Address Line 1' />
-            <Input
-              type='text' placeholder='100 Main St.'
-              id='address1'
-              // value={address1}
-              handleInput={this.props.handleInputChange}
-            />
+          <div className="form-row">
+          
+            <div className="form-group col-md-12">
+              <Label forHtml='address1' innerText='Address Line 1' />
+              <Input
+                type='text' placeholder='100 Main St.'
+                id='address1'
+                // value={address1}
+                handleInput={this.props.handleInputChange}
+              />
+            </div>
+
           </div>
-          <div className="form-group">
-            <Label forHtml='address2' innerText='Address Line 2' />
-            <Input
-              type='text' placeholder='Apartment, Studio or Floor'
-              id='address2'
-              // value={address2}
-              handleInput={this.props.handleInputChange}
-            />
+
+          <div className="form-row">
+          
+            <div className="form-group col-md-12">
+              <Label forHtml='address2' innerText='Address Line 2' />
+              <Input
+                type='text' placeholder='Apartment, Studio or Floor'
+                id='address2'
+                // value={address2}
+                handleInput={this.props.handleInputChange}
+              />
+            </div>
+
           </div>
 
           <div className="form-row">

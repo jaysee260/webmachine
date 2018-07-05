@@ -60,6 +60,7 @@ class DeveloperRegistration extends Component {
    * Makes DeveloperForm a controlled component
    */
   handleFormInputChange(e) {
+    console.log(e.target.parentElement.parentElement.parentElement);
     let { developer_form } = this.state;
 
     developer_form[e.target.id] = e.target.value;
