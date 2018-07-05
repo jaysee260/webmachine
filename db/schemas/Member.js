@@ -25,35 +25,15 @@ const memberObject = {
   email: String,
   auth0Id: String,
   networks: [ String ],
-
   isDev: {
     type: Boolean,
     default: false
   },
   dev_profile: {
-    // --- Group 1 ---
-    github_username: String,
-    competencies: Array,
-    // --- Group 2 ---
-    ssn: String,
-    payment_info: {
-      bank_name: String,
-      bank_account: String,
-      routing_number: String,
-      payments_received: {
-        type: Number,
-        default: 0
-      }
-    },
-    // --- Group 3 ---
-    workitems: {
-      active: Array,
-      pending: Array,
-      completed: Array,
-      abandoned: Array
-    }
+    type: Schema.Types.ObjectId,
+    ref: 'Partner',
+    default: null
   },
-
   joinDate: {
     type: Date,
     default: Date.now()
