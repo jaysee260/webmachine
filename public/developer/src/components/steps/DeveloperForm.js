@@ -79,6 +79,11 @@ class DeveloperForm extends Component {
         style={{ width: '70%', margin: '0 auto' }}
       >
         <h1>This is where you fill out a form!</h1>
+
+        <a href='#' onClick={() => this.props.changePage('network-selection')}>
+          Back to Network Selection
+        </a>
+
         {!this.state.loading ? this.renderForm() : <LoadingCog />}
       </form>
     );

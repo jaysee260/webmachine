@@ -66,6 +66,7 @@ class DeveloperRegistration extends Component {
      return (
        <DeveloperForm
           networksToCheck={this.state.networks}
+          changePage={this.handlePageChange}
        />
      )
    } else {
@@ -75,7 +76,7 @@ class DeveloperRegistration extends Component {
         <NetworkSelection
           networks={[]}
           changePage={this.handlePageChange}
-          handleSelection={this.handleNetworkSelection}
+          handleSelectionChange={this.handleNetworkSelection}
         />
      )
    }
