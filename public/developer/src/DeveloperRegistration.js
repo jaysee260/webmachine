@@ -13,13 +13,14 @@ class DeveloperRegistration extends Component {
     this.state = {
       location: 'network-selection',
       networks: [],
-      developer_form: {}
+      form: { member: {}, developer: {} }
     };
 
     // bindings
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleNetworkSelection = this.handleNetworkSelection.bind(this);
     this.handleFormInputChange = this.handleFormInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // If user isn't authenticated,
@@ -60,14 +61,48 @@ class DeveloperRegistration extends Component {
    * Makes DeveloperForm a controlled component
    */
   handleFormInputChange(e) {
-    console.log(e.target.parentElement.parentElement.parentElement);
-    let { developer_form } = this.state;
+    let { form } = this.state;
+    let form_section = e.target.parentElement.parentElement.parentElement;
 
-    developer_form[e.target.id] = e.target.value;
-    this.setState({ developer_form });
+    // Separates form input into a section of their
+    // respective category.
+    // Inspect state of DeveloperRegistration using
+    // React dev tools to watch behavior.
+    if (form_section.classList.contains('member')) {
+      form.member[e.target.id] = e.target.value;
+      this.setState({ form });
+    } else if (form_section.classList.contains('developer')) {
+      form.developer[e.target.id] = e.target.value;
+      this.setState({ form });
+    }
+
   }
 
+  handleSubmit(e, load) {
+    e.preventDefault();
+    let membership_check_results = load;
+    let { networks } = this.state;
 
+    console.log(membership_check_results, networks);
+
+    let registerAsMember = [], registerAsDev = [];
+
+    for (let i = 0; i < networks.length; i++) {
+      
+      for (let j = 0; j < membership_check_results.length; j++) {
+        if (membership_check_results[j].networkId === networks[i] && !membership_check_results[j].isMember) {
+          registerAsMember.push(networks[i]);
+          registerAsDev.push(networks[i])
+        } else {
+          registerAsDev.push(networks[i])
+        }
+      }
+      
+    }
+
+    console.log({registerAsMember},{registerAsDev})
+
+  }
 
   renderPage() {
 
@@ -87,6 +122,7 @@ class DeveloperRegistration extends Component {
           networksToCheck={this.state.networks}
           changePage={this.handlePageChange}
           handleInputChange={this.handleFormInputChange}
+          handleSubmit={this.handleSubmit}
        />
      )
    } else {
