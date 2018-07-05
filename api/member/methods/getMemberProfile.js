@@ -34,7 +34,7 @@ async function fetchMemberProfile (client, memberId) {
   if (utils.isValidUrl(client.uri)) {
 
     // Construct Client's DB URI
-    let clientDbUri = client.connectionString; //client.uri + client.dbname;
+    let clientDbUri = client.uri + client.dbname;
 
     // Open connection to Client's DB
     let db = mongoose.createConnection(clientDbUri, { poolSize: 10 });
