@@ -64,7 +64,7 @@ async function fetchMemberProfile (client, memberId) {
   } else {
     // If URI invalid, return throw error
 
-    console.log('Caution - Invalid Client URI ' + client.connectionString); //client.uri + client.dbname);
+    console.log('Caution - Invalid Client URI ' + client.uri + client.dbname);
 
     // return {
     //   type: 'ERROR',
