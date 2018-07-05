@@ -9,7 +9,8 @@ class NetworkSelection extends Component {
     super(props);
     this.state = {
       networks_with_market: [],
-      loading: true
+      loading: true,
+      error: { status: false, body: {} }
     }
 
     // bindings
@@ -41,6 +42,8 @@ class NetworkSelection extends Component {
         // if err, save into state and
         // VISUALLY notify user without crashing page
         console.log(err);
+        let error = { status: true, body: err };
+        this.setState({ error, loading: false });
       })
 
   }
