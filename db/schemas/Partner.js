@@ -30,11 +30,12 @@ const partnerObject = {
     active: Array,
     pending: Array,
     completed: Array,
+    late: Array,
     abandoned: Array
   },
   payment_info: {
     bank_name: String,
-    bank_account: {
+    account_number: {
       type: String,
       unique: true
     },
