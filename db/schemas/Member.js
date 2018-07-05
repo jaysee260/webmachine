@@ -29,11 +29,11 @@ const memberObject = {
     type: Boolean,
     default: false
   },
-  dev_profile: {
-    type: Schema.Types.ObjectId,
-    ref: 'Partner',
-    default: null
-  },
+  // dev_profile: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Partner',
+  //   default: null
+  // },
   joinDate: {
     type: Date,
     default: Date.now()

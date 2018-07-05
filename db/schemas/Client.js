@@ -158,6 +158,8 @@ const clientObject = {
   isPrivate: { type: Boolean, default: true },
   // Flags if the network has gone live
   isActivated: { type: Boolean, default: false },
+  // Flags if network runs marketplace
+  runsMarket: { type: Boolean, default: false },
   // Date the Network is added to the Database
   postdate: { type: Date, default: Date.now },
   // Unique Identifier, use instead of _id.
