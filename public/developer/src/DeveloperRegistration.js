@@ -19,6 +19,7 @@ class DeveloperRegistration extends Component {
     // bindings
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleNetworkSelection = this.handleNetworkSelection.bind(this);
+    this.handleFormInputChange = this.handleFormInputChange.bind(this);
   }
 
   // If user isn't authenticated,
@@ -48,6 +49,17 @@ class DeveloperRegistration extends Component {
     this.setState({ networks });
   }
 
+  /**
+   * @param {Object} event
+   * Makes DeveloperForm a controlled component
+   */
+  handleFormInputChange(e) {
+    let { developer_form } = this.state;
+
+    developer_form[e.target.id] = e.target.value;
+    this.setState({ developer_form });
+  }
+
 
 
   renderPage() {
@@ -67,6 +79,7 @@ class DeveloperRegistration extends Component {
        <DeveloperForm
           networksToCheck={this.state.networks}
           changePage={this.handlePageChange}
+          handleInputChange={this.handleFormInputChange}
        />
      )
    } else {

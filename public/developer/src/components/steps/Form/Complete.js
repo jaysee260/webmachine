@@ -24,7 +24,7 @@ class Complete extends Component {
               type='text' placeholder='John'
               id='firstName'
               // value={firstName}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
           <div className="form-group col-md-6">
@@ -33,7 +33,7 @@ class Complete extends Component {
               type='text' placeholder='Smith'
               id='lastName'
               // value={lastName}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
 
@@ -47,7 +47,7 @@ class Complete extends Component {
               type='text' placeholder='111-222-3333'
               id='phone'
               // value={phone}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
           <div className="form-group col-md-6">
@@ -56,7 +56,7 @@ class Complete extends Component {
               type='email' placeholder='email@domain.com'
               id='email'
               // value={email}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
 
@@ -68,7 +68,7 @@ class Complete extends Component {
               type='text' placeholder='100 Main St.'
               id='address1'
               // value={address1}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
           <div className="form-group">
@@ -77,7 +77,7 @@ class Complete extends Component {
               type='text' placeholder='Apartment, Studio or Floor'
               id='address2'
               // value={address2}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
 
@@ -88,7 +88,7 @@ class Complete extends Component {
             <Input
               type='text' id='city'
               // value={city}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
           <div className="form-group col-md-4">
@@ -96,7 +96,7 @@ class Complete extends Component {
             <Select
               id='state' options={state_abbreviations}
               // value={state}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
           <div className="form-group col-md-2">
@@ -104,18 +104,18 @@ class Complete extends Component {
             <Input
               type='text' id='zip'
               // value={zip}
-              // handleInput={this.props.handleChange}
+              handleInput={this.props.handleInputChange}
             />
           </div>
 
           </div>
 
-          <button
-          onClick={this.props.handleSubmit}
-          type="submit" className="btn btn-primary"
+          {/* <button
+            // onClick={this.props.handleSubmit}
+            type="submit" className="btn btn-primary"
           >
           Complete Registration
-          </button>
+          </button> */}
       </section>
     );
   }

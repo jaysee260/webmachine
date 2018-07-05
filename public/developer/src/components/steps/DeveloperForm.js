@@ -6,6 +6,7 @@ import { LoadingCog } from 'Common/loading'
 // Form components
 import Dev from './Form/Dev';
 import Complete from './Form/Complete'
+import { SubmitBtn } from './Form/FormElements'
 
 class DeveloperForm extends Component {
 
@@ -57,16 +58,54 @@ class DeveloperForm extends Component {
         count++
     }
 
+    let { handleInputChange } = this.props;
+
     if (count > 0) {
       return (
         <div>
-          <Complete />
-          <Dev />
+          <header>
+            <p>
+              Developers also have access to all the benefits regular network
+              members have.(In fact, developers are just members with added
+              "priviledges", such as access to work in the marketplace).
+            </p>
+            <p>
+              It seems like you are not registered as a member of 
+              <strong> one or more</strong> of the networks you selected...
+              Don't worry! We'll just gather some additional information and
+              register you as a member of whichever network(s) you aren't
+              registered for.
+            </p>
+            <p>
+              For networks that you have already signed up for, we will just
+              register you as a developer.
+            </p>
+          </header>
+
+          <Complete
+            handleInputChange={handleInputChange}
+          />
+          <hr />
+          <Dev
+            handleInputChange={handleInputChange}
+          />
+          <SubmitBtn
+            text="Complete Registration"
+            // handleSubmit={}
+          />
         </div>
       )
     } else {
-      return (
-        <Dev />
+        return (
+          <div>
+            <Dev
+              handleInputChange={handleInputChange}
+            />
+            <SubmitBtn
+              text="Complete Registration"
+              // handleSubmit={}
+            />
+          </div>
       )
     }
 
@@ -76,9 +115,9 @@ class DeveloperForm extends Component {
     return (
       <form
         id="developer-form"
-        style={{ width: '70%', margin: '0 auto' }}
+        style={{ width: '70%', margin: '0 auto 20px' }}
       >
-        <h1>This is where you fill out a form!</h1>
+        {/* <h1>This is where you fill out a form!</h1> */}
 
         <a href='#' onClick={() => this.props.changePage('network-selection')}>
           Back to Network Selection
