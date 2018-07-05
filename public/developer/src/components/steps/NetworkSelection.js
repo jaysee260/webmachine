@@ -29,6 +29,7 @@ class NetworkSelection extends Component {
     API.client.getPublicClientsWithMarket()
       .then(res => {
         let networks_with_market = res.data.payload;
+        
         this.setState({
           networks_with_market,
           loading: false

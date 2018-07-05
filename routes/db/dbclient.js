@@ -90,9 +90,7 @@ const dbclient = (router) => {
       let clientsWithMarket = await getPublicClientsWithMarket();
 
       res.status(200).json({
-        payload: clientsWithMarket,
-        msg: "You've reached the route to retrieve clients with a market",
-        status: "Under construction"
+        payload: clientsWithMarket
       });
 
     });

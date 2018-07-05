@@ -9,11 +9,11 @@ const uuidv1 = require('uuid/v1');
 
 const objStore = [
   {
-    firstname: 'Patrick',
-    lastname: 'Howard',
+    firstName: 'Patrick',
+    lastName: 'Howard',
     image: 'https://randomuser.me/api/portraits/lego/0.jpg',
-    addr1: "200 Main Street",
-    addr2: "apt 100",
+    address1: "200 Main Street",
+    address2: "apt 100",
     city: "Charlotte",
     state: "NC",
     zip: "28211",
@@ -22,11 +22,11 @@ const objStore = [
     isActive: true
   },
   {
-    firstname: 'Dan',
-    lastname: 'Orlovsky',
+    firstName: 'Dan',
+    lastName: 'Orlovsky',
     image: 'https://randomuser.me/api/portraits/lego/0.jpg',
-    addr1: "200 Main Street",
-    addr2: "apt 100",
+    address1: "200 Main Street",
+    address2: "apt 100",
     city: "Charlotte",
     state: "NC",
     zip: "28211",
@@ -35,11 +35,11 @@ const objStore = [
     isActive: true
   },
   {
-    firstname: 'Justin',
-    lastname: 'Adams',
+    firstName: 'Justin',
+    lastName: 'Adams',
     image: 'https://randomuser.me/api/portraits/lego/0.jpg',
-    addr1: "200 Main Street",
-    addr2: "apt 100",
+    address1: "200 Main Street",
+    address2: "apt 100",
     city: "Charlotte",
     state: "NC",
     zip: "28211",
@@ -48,11 +48,11 @@ const objStore = [
     isActive: true
   },
   {
-    firstname: 'Juan',
-    lastname: 'Gonzalez',
+    firstName: 'Juan',
+    lastName: 'Gonzalez',
     image: 'https://randomuser.me/api/portraits/lego/0.jpg',
-    addr1: "200 Main Street",
-    addr2: "apt 100",
+    address1: "200 Main Street",
+    address2: "apt 100",
     city: "Charlotte",
     state: "NC",
     zip: "28211",
@@ -61,11 +61,11 @@ const objStore = [
     isActive: true
   },
   {
-    firstname: 'Evgheni',
-    lastname: 'Pascalov',
+    firstName: 'Evgheni',
+    lastName: 'Pascalov',
     image: 'https://randomuser.me/api/portraits/lego/0.jpg',
-    addr1: "200 Main Street",
-    addr2: "apt 100",
+    address1: "200 Main Street",
+    address2: "apt 100",
     city: "Charlotte",
     state: "NC",
     zip: "28211",

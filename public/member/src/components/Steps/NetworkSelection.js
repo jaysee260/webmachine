@@ -73,7 +73,7 @@ class NetworkSelection extends Component {
             className="list-group-item network"
             onClick={this.toggleActiveClass}
           >
-            {n.name} {n.runsMarket == true ? "(runs a marketplace)" : null} 
+            {n.name}
           </li>)}
       </ul>
     )
