@@ -16,6 +16,10 @@ import {
   toggleWidget as chatWidgetToggleWidget,
 } from 'react-chat-widget';
 
+
+// chatwidget elements
+let apiProfile = "https://strategicmessage.mybluemix.net"
+//let apiProfile = "http://localhost:3200"
 class App extends Component {
   
     constructor(props) {
@@ -41,11 +45,13 @@ class App extends Component {
     // handles the incoming messages
     handleNewUserMessage = (newMessage) => {
       axios
-      .post('http://localhost:3200/api/ibm', { 
+      .post(`${apiProfile}/api/sms`, { 
           MessageSid: uuidv1(),
           SmsSid:uuidv1(),
           AccountSid: uuidv1(),
           MessagingServiceSid: uuidv1(),
+          From: "+12017586357",
+          To: "+19148195104",
           Body: newMessage,
           NumMedia: "",
           NumSegments: "",
@@ -64,12 +70,24 @@ class App extends Component {
           ApiVersion: "v1",
           PostDate: Date.now(),
           ChaoticSid: uuidv1(),
-          ChaoticSource: "slack" 
+          ChaoticSource: "web" 
         })
-      .then(res => { 
+        .then(response => {          
+          response.data.forEach((r) => {
+            console.log(r)
+            let rKey = Object.keys(r)[0]
+            let message = r[rKey]
+            addResponseMessage(message)
+       
+         })
+         
+       })
+      
+      /*(res => { 
           let random = Math.round(Math.random());
           addResponseMessage(`${res.data.response.reply[random].msg}`);
         });
+        */
     }
     
     // setting the state.search to the typed in value
@@ -104,7 +122,7 @@ class App extends Component {
         } else {
         return (
           <p className="noFoundAgent">
-            Can't find an agent with the given name...
+            Cant find an agent with the given name...
           </p>
         )
     } 
