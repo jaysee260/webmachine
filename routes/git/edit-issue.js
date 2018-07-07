@@ -6,7 +6,8 @@
 
 const api = require('../../api/git/index');
 const moment = require('moment');
-const Workitem  = require('../../db/schemas/Workitem').Workitem;
+const mongoose = require('mongoose');
+const { workitemSchema }  = require('../../db/schemas/Workitem').Workitem;
 const { y, r } = require('../../console');
 
 const editIssue = (router) => {
@@ -25,6 +26,9 @@ const editIssue = (router) => {
 
     // Run validators and catch potential errors
     const errors = req.validationErrors();
+
+    let connection = mongoose.createConnection("mongodb://auto:B0ston@ds251889.mlab.com:51889/client2");
+    let Workitem = connection.model('Workitem', workitemSchema);
 
     // If there are errors, notify client side and end request.
     // In other words, if errors, workitem doesn't get updated.
