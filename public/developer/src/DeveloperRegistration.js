@@ -2,6 +2,9 @@ import React, { Component }     from 'react';
 import Auth                     from '../../home/src/Pages/Auth/Auth'
 import { BackToDashboard }      from '../../common/navigation'
 
+import API                        from 'Common/utils/API';
+import URI                        from 'Common/utils/URI';
+
 // Import stages of the process
 import NetworkSelection from './components/steps/NetworkSelection';
 import DeveloperForm from './components/steps/DeveloperForm';
@@ -107,12 +110,20 @@ class DeveloperRegistration extends Component {
     let memRegPromise, devRegPromise;
 
     if (registerAsMember.length > 0) {
-      let memberPayload = this.state.form.member;
+      let memberPayload = {
+        // enforcing these names because they're destructured in backend.
+        // REFACTOR
+        member_form: this.state.form.member,
+        networks_to_join: this.state.networks
+      };
       memRegPromise = API.member.register(memberPayload);
     }
       
     if (registerAsDev.length > 0) {
-      let devPayload = this.state.form.developer;
+      let devPayload = {
+        form: this.state.form.developer,
+        networks: this.state.networks
+      };
       devRegPromise = API.developer.register(devPayload)
     }
 
