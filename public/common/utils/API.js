@@ -61,6 +61,11 @@ export default {
         return axios.post('/api/db/member/check-membership', networksToCheck);
       }
     },
+    developer: {
+        register: (devPayload) => {
+            return axios.post('/api/db/developer/register', devPayload);
+        }
+    },
     stripe: {
         addSourceToCustomer: (customerId, sourceId) => {
             return axios.post('/api/db/client/addStripeSource', { cId: customerId, sId: sourceId });
