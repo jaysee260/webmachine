@@ -132,7 +132,7 @@ class DeveloperRegistration extends Component {
       Promise.all([memRegPromise, devRegPromise])
         .then(results => {
           console.log(results);
-          //URI.redirect('/dashboard);
+          URI.redirect('/dashboard')
         })
         .catch(err => {
           console.log(err)
@@ -141,7 +141,7 @@ class DeveloperRegistration extends Component {
       Promise.resolve(devRegPromise)
         .then(result => {
           console.log(result);
-          //URI.redirect('/dashboard);
+          URI.redirect('/dashboard')
         })
         .catch(err => {
           console.log(err);
