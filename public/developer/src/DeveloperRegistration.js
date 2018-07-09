@@ -79,11 +79,16 @@ class DeveloperRegistration extends Component {
   }
 
   handleSubmit(e, load) {
+    // Stop button's default behavior
     e.preventDefault();
+
+    // Give load a better reference
     let membership_check_results = load;
+
+    // Grab array of network _ids to join
     let { networks } = this.state;
 
-    console.log(membership_check_results, networks);
+    // console.log(membership_check_results, networks);
 
     let registerAsMember = [], registerAsDev = [];
 
