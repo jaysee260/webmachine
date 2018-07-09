@@ -24,25 +24,27 @@ const registerDeveloper = (router) => {
     // First fetch the URI for each client's DB
     let client_uris = await fetchURIs(networks);
 
-    let result;
-   client_uris.forEach(async client => {
-     let dbURI = client.uri + client.dbname;
-     let db = mongoose.createConnection(dbURI, { poolSize: 10 });
-     let Partner = db.model('Partner', partnerSchema);
+    let result = {};
+    client_uris.forEach(async client => {
+      let dbURI = client.uri + client.dbname;
+      let db = mongoose.createConnection(dbURI, { poolSize: 10 });
+      let Partner = db.model('Partner', partnerSchema);
 
-     try {
-      result = await Partner.create(partnerObj);
-     } catch (error) {
-       result = error;
-     }
-   });
+      try {
+        result = await Partner.create(partnerObj);
+      } catch (error) {
+        result.error = error;
+      }
+    });
 
    // More resilient error handling:
    // What happens if creation of Parntner document fails?
    // Ought to be able to return a proper notification.
 
-   res.json({ result });
-
+   if(!result.error) {
+    res.json({ msg: 'Developer registration successful' });
+   } else
+    res.json({ msg: 'Developer registration failed; something went wrong' });
   })
 
 }
