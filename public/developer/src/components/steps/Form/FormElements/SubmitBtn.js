@@ -11,7 +11,7 @@ import React from 'react'
  */
 export const SubmitBtn = ({ text, handleSubmit, load }) => 
   <button
-    onClick={() => handleSubmit(event, load)}
+    onClick={(event) => handleSubmit(event, load)}
     type="submit" className="btn btn-primary"
   >
     { text }
