@@ -88,7 +88,6 @@ class DeveloperRegistration extends Component {
     let registerAsMember = [], registerAsDev = [];
 
     for (let i = 0; i < networks.length; i++) {
-      
       for (let j = 0; j < membership_check_results.length; j++) {
         if (membership_check_results[j].networkId === networks[i] && !membership_check_results[j].isMember) {
           registerAsMember.push(networks[i]);
@@ -97,10 +96,41 @@ class DeveloperRegistration extends Component {
           registerAsDev.push(networks[i])
         }
       }
-      
     }
 
     console.log({registerAsMember},{registerAsDev})
+    let memRegPromise, devRegPromise;
+
+    if (registerAsMember.length > 0) {
+      let memberPayload = this.state.form.member;
+      memRegPromise = API.member.register(memberPayload);
+    }
+      
+    if (registerAsDev.length > 0) {
+      let devPayload = this.state.form.developer;
+      devRegPromise = API.developer.register(devPayload)
+    }
+
+    // redirect to dashboard
+    if (memRegPromise && devRegPromise) {
+      Promise.all([memRegPromise, devRegPromise])
+        .then(results => {
+          console.log(results);
+          //URI.redirect('/dashboard);
+        })
+        .catch(err => {
+          console.log(err)
+        });
+    } else {
+      Promise.resolve(devRegPromise)
+        .then(result => {
+          console.log(result);
+          //URI.redirect('/dashboard);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
 
   }
 
