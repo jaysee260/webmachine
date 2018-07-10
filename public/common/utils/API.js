@@ -64,6 +64,10 @@ export default {
     developer: {
         register: (devPayload) => {
             return axios.post('/api/db/developer/register', devPayload);
+        },
+        // Returns networks for which user is a developer
+        getAffiliatedNetworks: () => {
+            return axios.get('/api/db/developer/affiliated-networks');
         }
     },
     stripe: {

@@ -19,11 +19,22 @@ const registerDeveloper = (router) => {
   router.post('/', async (req, res, next) => {
 
     let { form, networks } = req.body;
-    let partnerObj = buildPartnerObj(form);
+
+    let devAuth0Id = getIdFromToken(req.headers.authorization);
+    
+    // Save developer id into Clients' partners field
+    let query = { "_id": { "$in": networks } };
+    let update = { "$push": { partners: devAuth0Id } }
+    try {
+      await Client.updateMany(query, update);
+    } catch (error) {
+      console.log(error)
+    }
     
     // First fetch the URI for each client's DB
     let client_uris = await fetchURIs(networks);
 
+    let partnerObj = buildPartnerObj(form);
     let result = {};
     client_uris.forEach(async client => {
       let dbURI = client.uri + client.dbname;
