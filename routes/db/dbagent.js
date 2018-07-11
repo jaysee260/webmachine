@@ -19,8 +19,7 @@ const dbagent = (router) => {
  	  })
    })
 
-	router.get('/', function(req, res, next) {
-		 console.log("-----------DB AGENTS ROUTE -----------")
+	router.get('/', function(req, res, next) {		
 		api.getAgents(req.token, req.conn, function(response){
 			res.status(200).send(response)
 			next()
