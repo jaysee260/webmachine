@@ -169,7 +169,7 @@ export default class DashboardComponent extends Component {
   renderMiddleColumn() {
     let { developerSectionContent } = this.state.pageData.main;
     let { affiliatedNetworks } = this.state;
-    console.log({affiliatedNetworks});
+    
     return (
       <FlexItem classes="animated fadeIn light-shadow text-center">
 
