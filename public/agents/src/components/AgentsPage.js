@@ -46,7 +46,7 @@ class App extends Component {
     };
     // handles the incoming messages
     handleNewUserMessage = (newMessage) => {
-      axios.post('http://localhost:3200/api/ibm', { 
+      axios.post(apiProfile + '/api/sms', {
           MessageSid: uuidv1(),
           SmsSid:uuidv1(),
           AccountSid: uuidv1(),

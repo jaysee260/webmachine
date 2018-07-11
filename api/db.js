@@ -5,7 +5,7 @@
 
 const Agent  =       require('../db/schemas/Agent').Agent
 const Client =       require('../db/schemas/Client').Client
-//const Platform =     require('../db/schemas/Platform').Platform 
+//const Platform =     require('../db/schemas/Platform').Platform
 
 
       //////////////////////////////////////////////////////
@@ -27,7 +27,7 @@ const Client =       require('../db/schemas/Client').Client
       })
     }
 
-  exports.getAgent = () => {
+  exports.getAgent = () => {   
 
     return new Promise((resolve, reject) => {
       Agent.find({}, function(err, response) {
@@ -145,4 +145,3 @@ const Client =       require('../db/schemas/Client').Client
         });
       })
     }
-
