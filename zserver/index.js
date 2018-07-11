@@ -23,13 +23,13 @@ const app =   express();;
 //////////////////////////////////////////////////////////////////////////
 /////////////    Seed test data if test env detected          ///////////
 ////////////////////////////////////////////////////////////////////////
-
+/*
 let envState = true
 if ( process.env.isLive == 'false' ) {
     envState = false
-    require('../db/mongoose')(envState)  
+    require('../db/mongoose')(envState)
 }
-
+*/
 
 //////////////////////////////////////////////////////////////////////////
 ////////////////////  Register Middleware       /////////////////////////
@@ -64,7 +64,7 @@ app.use(bodyParser.json({
 	type: 'application/json',
   extended: true
   }));
-  
+
   app.post('/api/sms', openHandler);
 //  function issues http call to server, testing the microservices and returning response
 async function openHandler(req, res) {
@@ -73,7 +73,7 @@ async function openHandler(req, res) {
 	const result = await callOpenWhisk(url)
 	console.log("openhandler function ")
 	res.status(200).send(JSON.stringify(result))
-  return	
+  return
   console.log(req);
 }
 
@@ -157,5 +157,3 @@ let port = process.env.PORT || keys.port;
 app.listen(port, () => {
   console.log(b('listening on port '), port)
 });
-
-
