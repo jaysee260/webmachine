@@ -61,6 +61,11 @@ export default {
         return axios.post('/api/db/member/check-membership', networksToCheck);
       }
     },
+    agent: {
+        getAll: () => {
+            return axios.get('/api/db/agent');
+        }
+    },
     developer: {
         register: (devPayload) => {
             return axios.post('/api/db/developer/register', devPayload);
