@@ -16,6 +16,13 @@ const registerDeveloper = (router) => {
 
   router.use(bodyParser.json())
 
+  /**
+   * @description
+   * 1. Add developer's auth0Id to Client's Partners roster
+   * 2. Create and save Partner Document into each of the
+   *    selected Client's Database.
+   */
+
   router.post('/', async (req, res, next) => {
 
     let { form, networks } = req.body;
