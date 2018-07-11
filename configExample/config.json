@@ -94,7 +94,9 @@
 		"jwksUri": "",
 		"domain": "",
 		"issuer": "",
-		"audience": ""
+		"audience": "",
+		"localRedirect": "http://localhost:3000",
+		"cloudRedirect": "https://strategicmachines.mybluemix.net"
 	},
 	"cloudinary": {
         "preset": "",

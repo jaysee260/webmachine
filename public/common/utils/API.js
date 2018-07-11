@@ -61,6 +61,20 @@ export default {
         return axios.post('/api/db/member/check-membership', networksToCheck);
       }
     },
+    agent: {
+        getAll: () => {
+            return axios.get('/api/db/agent');
+        }
+    },
+    developer: {
+        register: (devPayload) => {
+            return axios.post('/api/db/developer/register', devPayload);
+        },
+        // Returns networks for which user is a developer
+        getAffiliatedNetworks: () => {
+            return axios.get('/api/db/developer/affiliated-networks');
+        }
+    },
     stripe: {
         addSourceToCustomer: (customerId, sourceId) => {
             return axios.post('/api/db/client/addStripeSource', { cId: customerId, sId: sourceId });

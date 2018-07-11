@@ -2,6 +2,9 @@ import React, { Component }     from 'react';
 import Auth                     from '../../home/src/Pages/Auth/Auth'
 import { BackToDashboard }      from '../../common/navigation'
 
+import API                        from 'Common/utils/API';
+import URI                        from 'Common/utils/URI';
+
 // Import stages of the process
 import NetworkSelection from './components/steps/NetworkSelection';
 import DeveloperForm from './components/steps/DeveloperForm';
@@ -13,13 +16,14 @@ class DeveloperRegistration extends Component {
     this.state = {
       location: 'network-selection',
       networks: [],
-      developer_form: {}
+      form: { member: {}, developer: {} }
     };
 
     // bindings
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleNetworkSelection = this.handleNetworkSelection.bind(this);
     this.handleFormInputChange = this.handleFormInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // If user isn't authenticated,
@@ -36,7 +40,13 @@ class DeveloperRegistration extends Component {
    * Passed to children to handle page changes
    */
   handlePageChange(location) {
-    this.setState({ location });
+    // Value of location inicates where we're navigating TO.
+    // This decision structure ensures that at least one network is
+    // selected before proceeding to fill out the form.
+    if (location === 'developer-form' && this.state.networks.length === 0)
+      alert('Please select at least one network before proceeding')
+    else
+      this.setState({ location });
   }
 
 
@@ -54,13 +64,91 @@ class DeveloperRegistration extends Component {
    * Makes DeveloperForm a controlled component
    */
   handleFormInputChange(e) {
-    let { developer_form } = this.state;
+    let { form } = this.state;
+    let form_section = e.target.parentElement.parentElement.parentElement;
 
-    developer_form[e.target.id] = e.target.value;
-    this.setState({ developer_form });
+    // Separates form input into a section of their
+    // respective category.
+    // Inspect state of DeveloperRegistration using
+    // React dev tools to watch behavior.
+    if (form_section.classList.contains('member')) {
+      form.member[e.target.id] = e.target.value;
+      this.setState({ form });
+    } else if (form_section.classList.contains('developer')) {
+      form.developer[e.target.id] = e.target.value;
+      this.setState({ form });
+    }
+
   }
 
+  handleSubmit(e, load) {
+    // Stop button's default behavior
+    e.preventDefault();
 
+    // Give load a better reference
+    let membership_check_results = load;
+
+    // Grab array of network _ids to join
+    let { networks } = this.state;
+
+    // console.log(membership_check_results, networks);
+
+    let registerAsMember = [], registerAsDev = [];
+
+    for (let i = 0; i < networks.length; i++) {
+      for (let j = 0; j < membership_check_results.length; j++) {
+        if (membership_check_results[j].networkId === networks[i] && !membership_check_results[j].isMember) {
+          registerAsMember.push(networks[i]);
+          registerAsDev.push(networks[i])
+        } else {
+          registerAsDev.push(networks[i])
+        }
+      }
+    }
+
+    console.log({registerAsMember},{registerAsDev})
+    let memRegPromise, devRegPromise;
+
+    if (registerAsMember.length > 0) {
+      let memberPayload = {
+        // enforcing these names because they're destructured in backend.
+        // REFACTOR
+        member_form: this.state.form.member,
+        networks_to_join: this.state.networks
+      };
+      memRegPromise = API.member.register(memberPayload);
+    }
+      
+    if (registerAsDev.length > 0) {
+      let devPayload = {
+        form: this.state.form.developer,
+        networks: this.state.networks
+      };
+      devRegPromise = API.developer.register(devPayload)
+    }
+
+    // redirect to dashboard
+    if (memRegPromise && devRegPromise) {
+      Promise.all([memRegPromise, devRegPromise])
+        .then(results => {
+          console.log(results);
+          URI.redirect('/dashboard')
+        })
+        .catch(err => {
+          console.log(err)
+        });
+    } else {
+      Promise.resolve(devRegPromise)
+        .then(result => {
+          console.log(result);
+          URI.redirect('/dashboard')
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+
+  }
 
   renderPage() {
 
@@ -80,6 +168,7 @@ class DeveloperRegistration extends Component {
           networksToCheck={this.state.networks}
           changePage={this.handlePageChange}
           handleInputChange={this.handleFormInputChange}
+          handleSubmit={this.handleSubmit}
        />
      )
    } else {

@@ -2,12 +2,14 @@
  ///////         Agents Home Page             ///////
 ////////////////////////////////////////////////////
 
-import React, { Component }        from 'react';
-import axios                       from 'axios';
-import AgentList             from './AgentList';
-import SearchBar             from './SearchBar'; 
-import AgentsAvailable from './AgentsAvailable';
-import uuidv1                    from 'uuid/v1';
+import React, { Component }     from 'react';
+import axios                    from 'axios';
+import AgentList                from './AgentList';
+import SearchBar                from './SearchBar'; 
+import AgentsAvailable          from './AgentsAvailable';
+import uuidv1                   from 'uuid/v1';
+import API                      from 'Common/utils/API';
+import { BackHome }             from 'Common/navigation';
 import {
   Widget,
   addResponseMessage,
@@ -26,7 +28,7 @@ class App extends Component {
       super(props);
       this.state = {
        agents: [],
-       isLoading: false,
+       isLoading: true,
        error: null,
        search: '',
        currentChattingAgent: []
@@ -37,15 +39,14 @@ class App extends Component {
     
     // fetches all the agents from the databases and setting the state
     componentDidMount() {
-      this.setState({ isLoading: true })
-      axios.get('/api/db/agent/')
+      // this.setState({ isLoading: true })
+      API.agent.getAll()
         .then(res => this.setState({ agents: res.data, isLoading: false }))
         .catch(error => this.setState({ error, isLoading: false }));
     };
     // handles the incoming messages
     handleNewUserMessage = (newMessage) => {
-      axios
-      .post(`${apiProfile}/api/sms`, { 
+      axios.post('http://localhost:3200/api/ibm', { 
           MessageSid: uuidv1(),
           SmsSid:uuidv1(),
           AccountSid: uuidv1(),
@@ -134,7 +135,7 @@ class App extends Component {
 
   // setting the state for the currently chatting agent
   onAgentChatClick(agent) {
-    console.log(agent);
+    // console.log(agent);
     this.setState({ currentChattingAgent: agent })
     chatWidgetToggleWidget();
   }
@@ -149,7 +150,8 @@ class App extends Component {
       
       return ( 
         
-        <div>        
+        <div>
+          <BackHome />    
           {/*  search bar component passes the state.search value */}
             <SearchBar
               value={ this.state.search }
