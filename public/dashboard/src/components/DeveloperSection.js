@@ -1,30 +1,28 @@
 import React from "react";
 import { JoinedClient } from './';
+import { FlexItem } from 'Common/grid';
 
 export const DeveloperSection = ({ content, affiliatedNetworks, handleCallToUpdateProfile }) => 
   <section>
     {/*
-      In essence... This section needs to render
-      a set of content if the person is a developer
-      for AT LEAST one network, and another set of
-      content if the person is not a developer for
-      ANY network.
-
-      The button to browse networks that support a
-      marketplace should always render.
+      If user is developer for at least ONE network,
+      render it/them. 
+      Otherwise, render alternative message.
     */}
    
-    {/* <h4>{ content.isNotDeveloper.description }</h4> */}
-    {console.log(affiliatedNetworks.length, Array.isArray(affiliatedNetworks))}
     {affiliatedNetworks.affiliatedNetworks.length > 0 ? (
-      <div className="affiliated-networks container">
+      <div className="affiliated-networks">
+
         <h3 className="title">You're a developer for</h3>
-        {affiliatedNetworks.affiliatedNetworks.map((current, i) => (
-          <JoinedClient
-            key={i}
-            network={current}
-          />
-        ))}
+        <div className="owned-networks">
+          {affiliatedNetworks.affiliatedNetworks.map((current, i) => (
+              <JoinedClient
+                key={i}
+                network={current}
+              />
+          ))}
+        </div>
+
       </div>
     ) : (
       <div className="no-affiliations">
