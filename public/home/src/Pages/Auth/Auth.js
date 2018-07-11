@@ -5,20 +5,12 @@ import {Redirect} from 'react-router-dom';
 import URI from '../../../../common/utils/URI';
 const config = require("../../../../../config").init();
 
-
-function setRedirect() {
-  // let cloudRedirect = 'https://strategicmachines.mybluemix.net';
-  // let localRedirect = 'http://localhost:3000';
-
-  if (process.env.PRODUCTION) {
-    console.log("returning cloud redirect")
-    return config.auth0.cloudRedirect;
-    }
-  else {
-    console.log("returning local redirect")
-    return config.auth0.localRedirect;
-    }
-  }
+/* note to run this app in cloud or local host
+The redirectUri needs to be set to
+config.auth0.cloudRedirect when running in the cloud
+and
+config.auth0.localRedirect when running local
+*/
 
 //set up auth0 configuration
 export default class Auth {
@@ -26,7 +18,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: config.auth0.domain,
     clientID: config.auth0.clientID,
-    redirectUri: setRedirect(),
+    redirectUri: config.auth0.cloudRedirect,
     audience: config.auth0.audience,
     responseType: 'token id_token',
     scope: 'openid profile user_metadata',

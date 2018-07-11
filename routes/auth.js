@@ -64,7 +64,7 @@ const auth = (router) => {
 			default:
 		}
 
-        
+
 	// configured for future capabilities, processing messages from various channels
 	// as of 2/2018 - only configured for web http and sms channels
 
@@ -123,44 +123,8 @@ const auth = (router) => {
   if (process.env.isLive == "true") {
     productionState = true }
 
-    /////////////////////////////////////////////////////////////
-    //REFACTOR   --- this call needs to be made against mlab /platform collection for
-    // strategic machines   ...
-    // switch collections based on prod vs dev AND
-    // also db call query to match web token or sms number -- to locate platform user
   let platform = platformarray.filter((p) => p.isLive == productionState)
 
-	// find unique configuration from the array of authorized platform subscribers
-  // AUTH DISABLED FOR WEBMACHINES PENDING INTEGRATION OF AUTH0 process
-  /*
-  let authToken = []
-
-	if (req.body.ChaoticSource == "sms") {
-			authToken = platform.filter((p) => p.sms == req.body.To )
-			console.log(authToken)
-		}
-	if (req.body.ChaoticSource == "web") {
-			authToken = platform.filter((p) => p.web == req.body.Token )
-		  console.log(authToken) }
-  /////////////////////////////////////////////////////////////////////////////
-	// configure the db connection for that authorized organization --
-	// and save to req object -- will be accessed in dedicated stages for the route
-	if (authToken.length > 1) {
-		console.log(r("Fatal Platform Error: Platform Configuration IDs not Unique"))
-		console.log(authToken)
-		process.exit(1)
-	}
-
-	if (authToken.length < 1) {
-		console.log(r("Authorization failed: Identifier not found in platform config"))
-		console.log(req.body)
-		console.log("----------")
-		console.log(req.token)
-		process.exit(1)
-	}
-	// db conection already made for strategic machines web site
-	// no dynamic assignment for web site unlike the messaging site
-  */
   next()
  })
 }
