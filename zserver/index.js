@@ -21,12 +21,14 @@ const { g, b, gr, r, y } = require('../console');
 const app =   express();;
 
 //////////////////////////////////////////////////////////////////////////
-/////////////    Seed test data if test env detected          ///////////
+/////////////    Logic to select platform config based on env  ///////////
 ////////////////////////////////////////////////////////////////////////
 
 let envState = true
 if ( process.env.isLive == 'false' ) {
     envState = false
+    require('../db/mongoose')(envState)
+} else {
     require('../db/mongoose')(envState)
 }
 
