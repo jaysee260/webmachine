@@ -142,6 +142,10 @@ const clientObject = {
     type: Array,
     default: [],
   },
+  partners: {
+    type: Array,
+    default: []
+  },
   agents: {
     type: Array,
     default: [],

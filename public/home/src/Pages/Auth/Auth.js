@@ -5,7 +5,17 @@ import {Redirect} from 'react-router-dom';
 import URI from '../../../../common/utils/URI';
 const config = require("../../../../../config").init();
 
+function setRedirect() {
+  // let cloudRedirect = 'https://strategicmachines.mybluemix.net';
+  // let localRedirect = 'http://localhost:3000';
 
+  if (process.env.VCAP_APPLICATION && process.env.PRODUCTION)
+    return config.auth0.cloudRedirect;
+  else if (process.env.VCAP_APPLICATION)
+    return config.auth0.cloudRedirect;
+  else
+    return config.auth0.localRedirect;
+}
 
 //set up auth0 configuration
 export default class Auth {
@@ -13,7 +23,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: config.auth0.domain,
     clientID: config.auth0.clientID,
-    redirectUri: 'http://localhost:3000',
+    redirectUri: setRedirect(),
     audience: config.auth0.audience,
     responseType: 'token id_token',
     scope: 'openid profile user_metadata',

@@ -91,9 +91,10 @@ const memberProfile = (router) => {
     const projection = { "dbname": 1, "uri": 1 };
     const dbKeys = await Client.findById(query1, projection);
 
-    // Remove Member from Client's members[Array]
+    // Remove Member from Client's members[Array] and partners[Array]
+    /** Update made on July 10 by @author JG */
     const query2 = { "_id": clientId };
-    const update = { "$pull": { "members": memberId } };  
+    const update = { "$pull": { "members": memberId, "partners": memberId } };  
     try {
       await Client.findByIdAndUpdate(query2, update);
     } catch (error) {

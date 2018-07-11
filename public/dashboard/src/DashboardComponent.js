@@ -86,20 +86,29 @@ export default class DashboardComponent extends Component {
    * @description gets the text to display, and makes API calls to get the networks the user owns and is a member of.
    */
   componentDidMount() {
+    // If user isn't authenticated, redirect to login.
     if (!auth.isAuthenticated()) auth.login();
 
+    // Fetch page content
     let pageData = this.getDashboardPageData().then(resp => {
       return resp.json();
     });
-    let ownedNetworks = API.client.getClientsByAccessId();
-    let joinedNetworks = API.client.getJoinedNetworks();
 
-    Promise.all([pageData, ownedNetworks, joinedNetworks])
+    // Fetches networks user may own and manage
+    let ownedNetworks = API.client.getClientsByAccessId();
+    // Fetches networks user may be a member of
+    let joinedNetworks = API.client.getJoinedNetworks();
+    // Fetches networks user may be a Partner of
+    let affiliatedNetworks = API.developer.getAffiliatedNetworks();
+
+    // Resolve all pending promises. Once values are resolved, store into state
+    Promise.all([pageData, ownedNetworks, joinedNetworks, affiliatedNetworks])
       .then(values => {
         this.setState({
           pageData: values[0],
           ownedNetworks: values[1].data,
           joinedNetworks: values[2].data,
+          affiliatedNetworks: values[3].data,
           isLoading: false
         });
       })
@@ -159,11 +168,15 @@ export default class DashboardComponent extends Component {
 
   renderMiddleColumn() {
     let { developerSectionContent } = this.state.pageData.main;
+    let { affiliatedNetworks } = this.state;
+    
     return (
       <FlexItem classes="animated fadeIn light-shadow text-center">
 
         <DeveloperSection
           content={developerSectionContent}
+          affiliatedNetworks={affiliatedNetworks}
+          handleCallToUpdateProfile={this.handleCallToUpdateProfile}
         />
 
       </FlexItem>

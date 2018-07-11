@@ -91,7 +91,8 @@ class DeveloperForm extends Component {
           />
           <SubmitBtn
             text="Complete Registration"
-            // handleSubmit={}
+            handleSubmit={this.props.handleSubmit}
+            load={this.state.membership_check_results}
           />
         </div>
       )
@@ -103,7 +104,8 @@ class DeveloperForm extends Component {
             />
             <SubmitBtn
               text="Complete Registration"
-              // handleSubmit={}
+              handleSubmit={this.props.handleSubmit}
+              load={this.state.membership_check_results}
             />
           </div>
       )
