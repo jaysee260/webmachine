@@ -111,6 +111,7 @@ class StripeForm extends Component {
         ];
 
         Promise.all(promises).then(values => {
+          console.log(values[1].data.stripeCustomer);
           this.setState({
             isSaving: false,
             isUpdated: true,
