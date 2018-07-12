@@ -23,6 +23,8 @@ const uri = db.uri
             .replace('<dbpassword>', db.password)
             .replace('<dbname>', db.name);
 
+const dbname = db.name;
+
 // Set path and name of file into which test-data will be saved
 const fileName = path.resolve(__dirname, '../db/data/workitems.js');
 
@@ -31,7 +33,7 @@ MongoClient.connect(uri, function(err, client) {
   // Assert that err == null
   assert.equal(null, err);
   // Set reference to respective database
-  let db = client.db(db.name);
+  let db = client.db(dbname);
 
   // Notify user of successful connection
   console.log(g('Successful connection to mLab'));
