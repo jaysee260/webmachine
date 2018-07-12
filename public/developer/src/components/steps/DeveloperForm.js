@@ -27,7 +27,7 @@ class DeveloperForm extends Component {
 
     API.member.checkMembership(payload)
       .then(res => {
-        console.log(res.data.results)
+        // console.log(res.data.results)
         let membership_check_results = res.data.results;
         this.setState({
           membership_check_results,
