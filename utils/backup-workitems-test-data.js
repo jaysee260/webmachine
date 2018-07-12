@@ -30,8 +30,8 @@ const fileName = path.resolve(__dirname, '../db/data/workitems.js');
 MongoClient.connect(uri, function(err, client) {
   // Assert that err == null
   assert.equal(null, err);
-  // Set reference to machine database
-  let db = client.db('machine');
+  // Set reference to respective database
+  let db = client.db(db.name);
 
   // Notify user of successful connection
   console.log(g('Successful connection to mLab'));
