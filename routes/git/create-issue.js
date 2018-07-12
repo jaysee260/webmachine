@@ -5,9 +5,10 @@
 ////////////////////////////////////////////////////
 
 const api                   = require('../../api/git/index');
+const mongoose              = require('mongoose');
 const expressValidator      = require('express-validator');
 const moment                = require('moment');
-const Workitem              = require('../../db/schemas/Workitem').Workitem;
+const { workitemSchema }    = require('../../db/schemas/Workitem');
 const { y, r }              = require('../../console');
 
 const createIssue = (router) => {
@@ -50,13 +51,13 @@ const createIssue = (router) => {
         description: req.body.description
       };
 
-      // console.log(req.body);
       console.log(y('no errors!'));
-      // res.status(201);
-      // res.json({
-      //   msg: 'workitem captured, verifying...'
-      // });
-      // next();
+
+      // Refactor in future
+      // Currently connecting to Strategic Machine's DB
+      // Because only Strategic Machines supports a marketplace
+      let connection = mongoose.createConnection("mongodb://auto:B0ston@ds251889.mlab.com:51889/client2");
+      let Workitem = connection.model('Workitem', workitemSchema);
       
       // Save wi into DB
       Workitem.create(workitem)

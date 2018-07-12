@@ -159,28 +159,26 @@ class App extends Component {
              /> 
 
           {/* if state.search value is empty => renders all the agents in the state  */}
-            { !this.state.search
-            ?
-            (<div>
-              <AgentsAvailable qty={ this.state.agents.length } />
-              <AgentList
-                agents={ this.state.agents }
-                onAgentClick={ this.props.onAgentClick }
-                onAgentChatClick={this.onAgentChatClick.bind(this)}
-              />
-              <Widget
-                handleNewUserMessage={ this.handleNewUserMessage }
-                autofocus={true}
-                subtitle={`Agent ${ this.state.currentChattingAgent.name } is here to help you`}
-                profileAvatar={ this.state.currentChattingAgent.avatar }
-              />
-            </div>) 
-            : 
-          // {/* if state.search is not empty => calls the renderSearchResults method */}
-            (<div> 
-              { this.renderSearchResults() }
-            </div>)
-           }  
+            { !this.state.search ? (
+              <div>
+                <AgentsAvailable qty={ this.state.agents.length } />
+                <AgentList
+                  agents={ this.state.agents }
+                  onAgentClick={ this.props.onAgentClick }
+                  onAgentChatClick={this.onAgentChatClick.bind(this)}
+                />
+                <Widget
+                  handleNewUserMessage={ this.handleNewUserMessage }
+                  autofocus={true}
+                  subtitle={`Agent ${ this.state.currentChattingAgent.name } is here to help you`}
+                  profileAvatar={ this.state.currentChattingAgent.avatar }
+                />
+              </div>
+            ) : (
+              <div> 
+                { this.renderSearchResults() }
+              </div>
+            )}  
         </div>
       );
     } 

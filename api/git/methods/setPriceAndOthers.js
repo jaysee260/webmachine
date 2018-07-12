@@ -20,7 +20,7 @@ module.exports = async function(issues, repo) {
     * filter the client whose unique id matches;
     * grab uri and connect on the fly
   * */
-  let connection = mongoose.createConnection("mongodb://auto:B0ston@ds157057.mlab.com:57057/client1");
+  let connection = mongoose.createConnection("mongodb://auto:B0ston@ds251889.mlab.com:51889/client2");
   let Workitem = connection.model('Workitem', workitemSchema);
   
   // Get all workitems for repo from db
@@ -66,6 +66,7 @@ module.exports = async function(issues, repo) {
     console.log(r('One of two possible things have happened; please refer to the comments in the file for more details.'));
     console.log(r('For now, however, we have prevented the program from crashing.'));
     console.log(r('Be advised that we are working on a more effective and graceful way of handling this error.'))
+    // console.log(error)
   }
   
   return issues;

@@ -136,9 +136,9 @@ class NetworkSelection extends Component {
         <header>
 
           <h3 className="title">Some networks support Marketplaces</h3>
-          <h5 className='subtitle'>A marketplace is an environment where developers can browse through workitems matching their skillset.</h5> 
-          <h5 className='subtitle'>As a developer of a network, you have the ability to "pick up" workitems and complete them by their respective deadlines.</h5>
-          <h5 className='subtitle'>Once a workitem has been completed, reviewed and approved by an admin, payment is released to the developer.</h5>
+          <p className='subtitle'>A marketplace is an environment where developers can browse through workitems matching their skillset.</p> 
+          <p className='subtitle'>As a developer of a network, you have the ability to "pick up" workitems and complete them by their respective deadlines.</p>
+          <p className='subtitle'>Once a workitem has been completed, reviewed and approved by an admin, payment is released to the developer.</p>
 
         </header>
 
