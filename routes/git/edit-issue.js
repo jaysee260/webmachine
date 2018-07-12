@@ -27,6 +27,9 @@ const editIssue = (router) => {
     // Run validators and catch potential errors
     const errors = req.validationErrors();
 
+    // Refactor in future
+    // Currently connecting to Strategic Machine's DB
+    // Because only Strategic Machines supports a marketplace
     let connection = mongoose.createConnection("mongodb://auto:B0ston@ds251889.mlab.com:51889/client2");
     let Workitem = connection.model('Workitem', workitemSchema);
 

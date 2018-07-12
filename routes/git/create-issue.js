@@ -51,14 +51,11 @@ const createIssue = (router) => {
         description: req.body.description
       };
 
-      // console.log(req.body);
       console.log(y('no errors!'));
-      // res.status(201);
-      // res.json({
-      //   msg: 'workitem captured, verifying...'
-      // });
-      // next();
 
+      // Refactor in future
+      // Currently connecting to Strategic Machine's DB
+      // Because only Strategic Machines supports a marketplace
       let connection = mongoose.createConnection("mongodb://auto:B0ston@ds251889.mlab.com:51889/client2");
       let Workitem = connection.model('Workitem', workitemSchema);
       
