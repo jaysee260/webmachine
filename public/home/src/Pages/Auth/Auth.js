@@ -18,7 +18,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: config.auth0.domain,
     clientID: config.auth0.clientID,
-    redirectUri: config.auth0.cloudRedirect,
+    redirectUri: process.env.PRODUCTION ? config.auth0.cloudRedirect : config.auth0.localRedirect,
     audience: config.auth0.audience,
     responseType: 'token id_token',
     scope: 'openid profile user_metadata',
