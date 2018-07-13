@@ -14,7 +14,7 @@ config.auth0.localRedirect when running local
 
 //set up auth0 configuration
 export default class Auth {
-  
+
   auth0 = new auth0.WebAuth({
     domain: config.auth0.domain,
     clientID: config.auth0.clientID,
@@ -33,7 +33,7 @@ export default class Auth {
     this.getProfile = this.getProfile.bind(this);
   }
 
-  
+
 //this function pulls up the auth0 authorization
   login(redirect = "") {
     if(redirect !== "") localStorage.setItem("redirect", redirect);
@@ -44,7 +44,7 @@ export default class Auth {
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        
+
         this.setSession(authResult);
         let redirect = localStorage.getItem("redirect");
         if(redirect) {
@@ -56,7 +56,7 @@ export default class Auth {
         history.replace('/');
         console.log("ERR::::", err);
       }
-    });    
+    });
   }
 
   // Sets the session in local storage
@@ -78,7 +78,7 @@ export default class Auth {
     return accessToken;
   }
 
-  
+
   //this function returns profile object which is populated with the authenticated user's information
   getProfile(cb) {
     let accessToken = this.getAccessToken();
@@ -87,7 +87,7 @@ export default class Auth {
         if (profile) {
           return cb(err, profile);
         }
-        return cb(err, {});      
+        return cb(err, {});
       });
     }
   }
@@ -103,12 +103,11 @@ export default class Auth {
   }
 
   isAuthenticated() {
-    // Check whether the current time is past the 
+    // Check whether the current time is past the
     // Access Token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
 
-  
-}
 
+}

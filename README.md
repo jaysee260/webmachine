@@ -27,6 +27,8 @@ The code base is isomorphic, with key configuration data shared between client a
 - Insert the github json token for the strategicmarket test repos in config.json githubrepo object. Contact admin for token
 - update gmail for account data if using the transport notifier, as well as the block of code in zserver/server
 5. be sure that the /machines db on your mongodb on local host is deleted before running your project. Test data will be automatically initialized
+6. FINAL important note - when running local .. see note in public/home/src/pages/auth/auth.js
+
 
 ## --------------------------------------------
 

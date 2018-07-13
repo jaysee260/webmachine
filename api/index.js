@@ -34,7 +34,6 @@ const config =          require('../config').init()
 
     // get all records in agent collections
     exports.getAgents = (token, conn, cb) => {
-
         thread(conn).then((result) => {
           cb(result)
         }).catch((err) => {
