@@ -2,8 +2,8 @@ import React, { Component }   from 'react';
 import { Widget,
     addResponseMessage,
     addLinkSnippet,
-    addUserMessage }     from 'react-chat-widget';
-import uuidv1        from 'uuid/v1';
+    addUserMessage }          from 'react-chat-widget';
+import uuidv1                 from 'uuid/v1';
 import config                 from '../../../../config'
 import logo                   from '../../../avatar/persona/mark.png';
 

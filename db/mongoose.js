@@ -1,17 +1,16 @@
 /**
  * @name mongoose.js
- * @description 
+ * @description
  * Establishes a connection to the database via mongoose.
- * Checks if there is a DBURI in the environment variables first.  
+ * Checks if there is a DBURI in the environment variables first.
  * Then checks if the config.uri (in platform) has a valid uri.
  */
-
 
 const mongoose =            require('mongoose');
 const platform =            require('../config').platform()
 const utils =               require('../utils');
 
-const { g, r } =               require('../console');
+const { g, r } =            require('../console');
 
 module.exports = (envState) => {
     // Set mongoose up for promises rather than callbacks
@@ -31,5 +30,5 @@ module.exports = (envState) => {
     // Opens connection
     mongoose.connect(dbURI);
     console.log(g("We have established a connection to the database."))
-    
+
 }

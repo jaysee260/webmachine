@@ -3086,8 +3086,8 @@
     "blockchain": {
       "date": "2018-07-07T17:15:35.742Z"
     },
-    "stage": "active",
-    "assignee": "Daniel",
+    "stage": "open",
+    "assignee": null,
     "id": "3f32ab20-8206-11e8-95e0-c5b9e369f46b",
     "itemId": "2",
     "title": "second test",
@@ -3097,7 +3097,7 @@
     "description": "eyes on me",
     "PostDate": "2018-07-07T17:15:35.742Z",
     "__v": 0,
-    "dueDate": "2018-07-14T17:16:30.000Z"
+    "dueDate": "2018-07-19T21:19:57.000Z"
   },
   {
     "_id": "5b4775d0e7179a2f2c78cc37",
