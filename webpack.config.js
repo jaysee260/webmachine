@@ -2,7 +2,7 @@ const webpack =           require('webpack');
 const path =              require('path');
 let commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
     name: "vendor"
-  });
+});
 
 module.exports = {
   entry: {  
@@ -52,11 +52,17 @@ module.exports = {
     filename: '[name]-bundle.js'
   },
   plugins: [
+    commonsPlugin,
     new webpack.HotModuleReplacementPlugin(),
-    commonsPlugin
+    new webpack.ProgressPlugin()
   ],
   devServer: {
+    index: '',
     contentBase: './public/dist',
-    hot: true
+    historyApiFallback: true,
+    proxy: {
+      context: () => true,
+      target: 'http://localhost:3000'
+    }
   }
 };
