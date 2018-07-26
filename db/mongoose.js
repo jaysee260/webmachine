@@ -28,7 +28,7 @@ module.exports = (envState) => {
     }
 
     // Opens connection
-    mongoose.connect(dbURI);
+    mongoose.connect(dbURI, { useNewUrlParser: true });
     console.log(g("We have established a connection to the database."))
 
 }
